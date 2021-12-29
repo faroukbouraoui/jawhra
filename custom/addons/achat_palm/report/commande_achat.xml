@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <template id="commande_achat_inheritance" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='page']/table/thead/tr/th[@name='th_quantity']" position="replace">
+                <th name="th_quantity" class="text-right">
+                    <strong>caisse</strong>
+                </th>
+                <th name="th_quantity" class="text-right">
+                    <strong>Poid net</strong>
+                </th>
+            </xpath>
+            <xpath expr="//div[@class='page']/table/thead/tr/th[@name='th_quantity']" position="after">
+                <th name="th_qte_nette" class="text-right">
+                    <strong>Poid brut</strong>
+                </th>
+            </xpath>
+
+            <xpath expr="//div[@class='page']/table/tbody/t/tr/t/td[4]" position="before">
+                <td class="text-right">
+                    <span t-field="line.qte_caisse"/>
+                    <span t-field="line.caisse_id"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//div[@class='page']/table/tbody/t/tr/t/td[4]" position="after">
+                <td class="text-right">
+                    <span t-field="line.qte_nette"/>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>

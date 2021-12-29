@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+        <!--Remplissage de la table caisse-->
+        <record model="caisse" id="caisse_lame">
+            <field name="nom">Lame</field>
+            <field name="poid">1</field>
+        </record>
+
+        <record model="caisse" id="caisse_plateau">
+            <field name="nom">Plateau</field>
+            <field name="poid">1.5</field>
+        </record>
+
+      <record model="caisse" id="caisse_grand_form">
+            <field name="nom">grand format</field>
+            <field name="poid">2</field>
+        </record>
+
+  </data>
+</odoo>

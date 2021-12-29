@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_l10n_tn_fiche_paie">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Bulletin de paie</h2>
+                        <p t-field="o.name"/>
+
+                        <table class="table table-sm table-bordered">
+                            <tr>
+                                <td>
+                                    <strong>Nom et prénom</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id"/>
+                                </td>
+                                <td>
+                                    <strong>Matricule</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.ssnid"/>
+                                </td>
+                                <td>
+                                    <strong>Régime</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.contract_id.struct_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Address</strong>
+                                </td>
+                                <td colspan="3">
+                                    <div t-field="o.employee_id.address_home_id"
+                                         t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>CNSS Employé</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.matricule_cnss"/>
+                                </td>
+                                <td>
+                                    <strong>CNSS Employeur</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.company_id.org_ss"/>
+                                </td>
+                                <td>
+                                    <strong>CIN No</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.identification_id"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>Fonction</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.job_id"/>
+                                </td>
+                                <td>
+                                    <strong>Qualification</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.contract_id.qualif"/>
+                                </td>
+                                <td>
+                                    <strong>Niveau</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.contract_id.niveau"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Compte Bancaire</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.bank_account_id"/>
+                                </td>
+                                <td>
+                                    <strong>Date De</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.date_from"/>
+                                </td>
+                                <td>
+                                    <strong>Date A</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.date_to"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Solde de congé</strong>
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.leaves_count"/>
+                                </td>
+                                <td t-foreach="o.worked_days_line_ids" t-as="q">
+                                    <span t-field="q.name"/>
+                                    <td>
+                                        <span t-field="q.number_of_days"/>
+                                    </td>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Libellé</th>
+                                    <th class="text-center">Rémunérations</th>
+                                    <th class="text-center">Retenues</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
+
+                                    <t t-if="line.category_id.remuneration =='oui'">
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.total"/>
+                                        </td>
+                                        <td></td>
+                                    </t>
+                                    <t t-if="line.category_id.remuneration =='non'">
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td></td>
+                                        <td class="text-right">
+                                            <span t-field="line.total"/>
+                                        </td>
+
+                                    </t>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Salaire Brut</th>
+                                    <th>Salaire Imposable</th>
+                                    <th>Salaire Net</th>
+                                    <th>Net à payer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+<!--                                        <span t-esc="get_total_by_rule_category(o, 'CGROSS')" widget='monetary'-->
+<!--                                              options="{'currency_field': 'currency_id'}"/>-->
+                                        <span t-esc="'{0:,.3f}'.format(get_total_by_rule_category(o, 'CGROSS'))"/>
+                                    </td>
+                                    <td>
+
+                                        <span t-esc="'{0:,.3f}'.format(get_total_by_rule_category(o, 'C_IMP'))"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="'{0:,.3f}'.format(get_total_by_rule_category(o, 'NET'))"/>
+                                    </td>
+                                    <td>
+                                         <span t-esc="'{0:,.3f}'.format(get_total_by_rule_category(o, 'NETAP'))"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <!-- <div t-field="o.employee_id.address_home_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
+
+
+                        <p class="mt32">DANS VOTRE INTERET ET POUR VOUS AIDER A FAIRE VALOIR VOS DROITS, CONSERVEZ CE
+                            BULLETIN DE PAIE SANS LIMITATION DE DUREE
+                        </p>
+
+                        <p class="text-right">
+                            <strong>Signature Autorisée</strong>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+</odoo>

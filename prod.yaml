@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jawhra-palm
+  namespace: odoo
+  labels:
+    app: jawhra-palm
+spec:
+  ports:
+    - port: 80
+      targetPort: 8069
+  selector:
+    app: jawhra-palm
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jawhra-palm
+  namespace: odoo
+  labels:
+    app: jawhra-palm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jawhra-palm
+  template:
+    metadata:
+      labels:
+        app: jawhra-palm
+    spec:
+      containers:
+        - image: idveyodoo.azurecr.io/jawhra-palm:#{ImageTag}#
+          name: jawhra-palm
+          ports:
+          - containerPort: 8069
+          env:
+          - name: HOST
+            value: pg-odoo
+          - name: USER
+            value: admin-jawhra
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: root_password
+                name: pg-odoo-secret
+          resources:
+            limits:
+              cpu: #[CpuL]#m
+              memory: #[RamL]#Mi
+            requests:
+              cpu: #[CpuR]#m
+              memory: #[RamR]#Mi
+      imagePullSecrets:
+        - name: odooreg
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: jawhra-palm-ha
+  namespace: odoo
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: jawhra-palm
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 75
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jawhra-palm-ingress
+  namespace: odoo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/affinity-mode: "persistent"
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"    
+spec:
+  tls:
+  - hosts:
+      - jawhra-palm.erp-idvey.com
+    secretName: jawhra-palm-tls
+  rules:
+  - host: jawhra-palm.erp-idvey.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jawhra-palm
+            port:
+              number: 80
+

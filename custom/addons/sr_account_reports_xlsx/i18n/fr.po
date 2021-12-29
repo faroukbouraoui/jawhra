@@ -1,0 +1,201 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sr_account_reports_xlsx
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-02 11:29+0000\n"
+"PO-Revision-Date: 2021-02-02 11:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__account_filter
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__account_filter
+msgid "Account Filter"
+msgstr "Filtre de compte"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.actions.act_window,name:sr_account_reports_xlsx.action_account_ledger_wizard_form
+#: model:ir.actions.report,name:sr_account_reports_xlsx.account_ledger_report_id
+#: model:ir.ui.menu,name:sr_account_reports_xlsx.account_ledger_report_menu
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+msgid "Account Ledger Report"
+msgstr "Rapport du grand livre des comptes"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model,name:sr_account_reports_xlsx.model_account_ledger_wizard
+msgid "Account Ledger Wizard"
+msgstr "Assistant de comptabilité"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__account_ids
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__account_ids
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "Accounts"
+msgstr "Comptes"
+
+#. module: sr_account_reports_xlsx
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__create_uid
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__create_date
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__display_name
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__display_name
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_account_ledger_report_xlsx__display_name
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_partner_ledger_report_xlsx__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__from_date
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__from_date
+msgid "From Date"
+msgstr "Date de début"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__id
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__id
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_account_ledger_report_xlsx__id
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_partner_ledger_report_xlsx__id
+msgid "ID"
+msgstr ""
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__include_movement_filter
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__include_movement_filter
+msgid "Include Movement Filter"
+msgstr "Inclure le filtre de mouvement"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__include_opening_balance
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__include_opening_balance
+msgid "Include Opening Balances"
+msgstr "Inclure les soldes d'ouverture"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard____last_update
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard____last_update
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_account_ledger_report_xlsx____last_update
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_report_partner_ledger_report_xlsx____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__write_uid
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__write_date
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.actions.act_window,name:sr_account_reports_xlsx.action_partner_ledger_wizard_form
+#: model:ir.actions.report,name:sr_account_reports_xlsx.partner_ledger_report_id
+#: model:ir.ui.menu,name:sr_account_reports_xlsx.partner_ledger_report_menu
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "Partner Ledger Report"
+msgstr "Rapport du grand livre des partenaires"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model,name:sr_account_reports_xlsx.model_partner_ledger_wizard
+msgid "Partner Ledger Wizard"
+msgstr "Assistant Ledger partenaire"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__partner_ids
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__partner_ids
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "Partners"
+msgstr "Partenaires"
+
+#. module: sr_account_reports_xlsx
+#: selection:account.ledger.wizard,account_filter:0
+#: selection:partner.ledger.wizard,account_filter:0
+msgid "Payable"
+msgstr ""
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__posted_entries_only
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__posted_entries_only
+msgid "Posted Entries Only"
+msgstr "Entrées publiées uniquement"
+
+#. module: sr_account_reports_xlsx
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "Print Report"
+msgstr "Imprimer le rapport"
+
+#. module: sr_account_reports_xlsx
+#: selection:account.ledger.wizard,account_filter:0
+#: selection:partner.ledger.wizard,account_filter:0
+msgid "Receivable"
+msgstr "Recevable"
+
+#. module: sr_account_reports_xlsx
+#: selection:account.ledger.wizard,account_filter:0
+#: selection:partner.ledger.wizard,account_filter:0
+msgid "Receivable and Payable"
+msgstr "À recevoir et à payer"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__show_zero_balance
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__show_zero_balance
+msgid "Show Zero Balance"
+msgstr "Afficher le solde nul"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__summary_format
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__summary_format
+msgid "Summary Format"
+msgstr "Format de résumé"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_account_ledger_wizard__to_date
+#: model:ir.model.fields,field_description:sr_account_reports_xlsx.field_partner_ledger_wizard__to_date
+msgid "To Date"
+msgstr "Date de fin"
+
+#. module: sr_account_reports_xlsx
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.account_ledger_wizard_form
+#: model_terms:ir.ui.view,arch_db:sr_account_reports_xlsx.partner_ledger_wizard_form
+msgid "or"
+msgstr "ou"
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model,name:sr_account_reports_xlsx.model_report_account_ledger_report_xlsx
+msgid "report.account_ledger_report_xlsx"
+msgstr ""
+
+#. module: sr_account_reports_xlsx
+#: model:ir.model,name:sr_account_reports_xlsx.model_report_partner_ledger_report_xlsx
+msgid "report.partner_ledger_report_xlsx"
+msgstr ""
+

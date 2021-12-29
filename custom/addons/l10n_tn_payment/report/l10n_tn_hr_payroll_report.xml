@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report
+            id="action_report_report_l10ntnfichepaie"
+            model="hr.payslip"
+            string="Fiche de paie"
+            report_type="qweb-pdf"
+            name="l10n_tn_payment.report_l10n_tn_fiche_paie"
+            file="l10n_tn_payment.report_l10n_tn_fiche_paie"
+        />
+
+</odoo>

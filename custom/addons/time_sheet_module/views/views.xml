@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="model_view_tree" model="ir.ui.view">
+            <field name="name">time_sheet_module.model.tree</field>
+            <field name="model">time_sheet_module.model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="total_day"/>
+                    <field name="cost"/>
+                    <field name="total_cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="model_view_form" model="ir.ui.view">
+            <field name="name">time_sheet_module.model.form</field>
+            <field name="model">time_sheet_module.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                            </group>
+                            <group>
+                                <field name="month"/>
+                                <field name="is_thirty_one_day" invisible="1"/>
+                                <field name="is_thirty_day" invisible="1"/>
+                                <field name="is_fev_28" invisible="1"/>
+                                <field name="is_fev_29" invisible="1"/>
+                                <field name="cost"/>
+                                <field name="advanced_1"/>
+                                <field name="advanced_2"/>
+<!--                                <field name="total_advanced" invisible="1"/>-->
+                                <field name="total_day"/>
+                                <field name="total_cost"/>
+                                <field name="total_net"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page>
+                                <group col="6">
+                                    <field name="one"/>
+                                    <field name="two"/>
+                                    <field name="three"/>
+                                    <field name="four"/>
+                                    <field name="five"/>
+                                    <field name="six"/>
+                                    <field name="seven"/>
+                                    <field name="eight"/>
+                                    <field name="nine"/>
+                                    <field name="ten"/>
+                                </group>
+                                <group col="6">
+                                    <field name="one_1"/>
+                                    <field name="one_2"/>
+                                    <field name="one_3"/>
+                                    <field name="one_4"/>
+                                    <field name="one_5"/>
+                                    <field name="one_6"/>
+                                    <field name="one_7"/>
+                                    <field name="one_8"/>
+                                    <field name="one_9"/>
+                                    <field name="two_0"/>
+                                </group>
+                                <group col="6">
+                                    <field name="two_1"/>
+                                    <field name="two_2"/>
+                                    <field name="two_3"/>
+                                    <field name="two_4"/>
+                                    <field name="two_5"/>
+                                    <field name="two_6"/>
+                                    <field name="two_7"/>
+                                    <field name="two_8"/>
+                                    <field name="two_9"
+                                           attrs="{'invisible':['&amp;',('is_fev_29','=',False),('month','==','2')]}"/>
+                                    <field name="three_0"
+                                           attrs="{'invisible':['|',('is_fev_29','=',True),('is_fev_28','=',True)]}"/>
+                                    <field name="three_1" attrs="{'invisible':[('is_thirty_one_day','=',False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="total_day"/>
+                                </group>
+
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="model_time_view_tree" model="ir.ui.view">
+            <field name="name">time_sheet_module.time.tree</field>
+            <field name="model">time_sheet_module.time</field>
+            <field name="arch" type="xml">
+                <tree string="Présence">
+                    <!--                    <field name="partner_id" string="Client"/>-->
+                    <field name="name"/>
+                    <field name="month" string="Mois"/>
+                    <field name="year" string="Année"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="time_sheet_view_form" model="ir.ui.view">
+            <field name="name">time.sheet.form</field>
+            <field name="model">time_sheet_module.time</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <!--<label  for="partner_id" string="Client"/>-->
+                                <field name="partner_id" invisible="1"/>
+                                <!--<label  for="date" string="Date de creation"/>-->
+                                <field name="date"/>
+                            </group>
+
+                            <group>
+                                <!--                                <label for="month" string="Date"-->
+                                <!--                                       style="font-weight: bold !important;margin-right:107px;margin-left: 0px;"/>-->
+                                <field name="month" string="Mois" style="width:110px"/>
+                                <field name="year" string="Année" style="width:110px;"/>
+                                <field name="is_fev_29" invisible="1"/>
+                                <field name="is_fev_28" invisible="1"/>
+                                <field name="is_thirty_one_day" invisible="1"/>
+                                <field name="is_thirty_day" invisible="1"/>
+                            </group>
+                        </group>
+
+                        <notebook colspan="4">
+                            <page string="Feuille de temps">
+
+                                <field name="model_id" widget="section_and_note_one2many" colspan="4">
+                                    <tree>
+                                        <field name="is_thirty_one_day" invisible="1"/>
+                                        <field name="is_thirty_day" invisible="1"/>
+                                        <field name="is_fev_28" invisible="1"/>
+                                        <field name="is_fev_29" invisible="1"/>
+                                        <field name="month" invisible="1"/>
+                                        <field name="employee_id"/>
+                                        <field name="total_day"/>
+                                        <field name="cost"/>
+                                        <field name="total_cost"/>
+                                        <field name="advanced_1"/>
+                                        <field name="advanced_2"/>
+                                        <field name="total_net"/>
+                                        <button name="action_show_model_id_details" string="Pointage"
+                                                type="object" icon="fa-list" options='{"warn": true}'/>
+                                    </tree>
+                                </field>
+                                <!--                                <group class="oe_subtotal_footer oe_right">-->
+                                <!--                                    <field name="total_t" string="Total Pointage"/>-->
+                                <!--                                </group>-->
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_cost" widget="monetary"/>
+                                    <field name="amount_advanced" widget="monetary"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline">
+                                        <label for="amount_total"/>
+                                    </div>
+                                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator"
+                                           widget="monetary" />
+                                </group>
+
+                            </page>
+                        </notebook>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="time_sheet_view_kanban" model="ir.ui.view">
+            <field name="name">time.sheet.view.kanban</field>
+            <field name="model">time_sheet_module.time</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div>
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="time_sheet_view_search">
+            <field name="name">time.sheet.view.search</field>
+            <field name="model">time_sheet_module.time</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="month"/>
+                    <!--                    <field name="total_t"/>-->
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="time_sheet_action">
+            <field name="name">Pointage</field>
+            <field name="res_model">time_sheet_module.time</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="model_time_view_tree"/>
+            <field name="context">{"search_default_Current":1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create new file
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_time_sheet" parent="hr.menu_hr_root" name="Pointage" sequence="90"
+                  action="time_sheet_action"/>
+
+
+        <record model="ir.ui.view" id="inherit_view_time_sheet">
+            <field name="name">time_sheet_module.time.form</field>
+            <field name="model">time_sheet_module.time</field>
+            <field name="inherit_id" ref="time_sheet_module.time_sheet_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page/field[@name='model_id']/tree"
+                       position="attributes">
+                    <attribute name="colors">red:is_thirty_one_day=True;</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--        <record model="ir.ui.view" id="inherit_view_task_form2_m">-->
+        <!--            <field name="name">inherit.view.task.form2</field>-->
+        <!--            <field name="model">project.task</field>-->
+        <!--            <field name="inherit_id" ref="project.view_task_form2"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//field[@name='partner_id']" position='after'>-->
+        <!--                    <field name="sale_line_id"  domain="[('partner_id', '=', 'partner_id') "/>-->
+        <!--                </xpath>-->
+
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <!--        <record id="view_time_sheet_module_employee" model="ir.actions.act_window">-->
+        <!--            <field name="name">Pointage</field>-->
+        <!--            <field name="res_model">time_sheet_module.model</field>-->
+        <!--            &lt;!&ndash;            <field name="search_view_id" ref="hr_timesheet_line_search"/>&ndash;&gt;-->
+        <!--            <field name="domain">[('employee_id', '=', 'employee_id')]</field>-->
+        <!--            <field name="context">{-->
+        <!--                'search_default_employee_id': [active_id],-->
+        <!--                'default_employee_id': active_id-->
+        <!--                }-->
+        <!--            </field>-->
+        <!--        </record>-->
+        <!--        <record id="timesheet_module_action_view_tree_employee_form" model="ir.actions.act_window.view">-->
+        <!--            <field name="sequence" eval="10"/>-->
+        <!--            <field name="view_mode">tree</field>-->
+        <!--            <field name="view_id" ref="model_view_tree"/>-->
+        <!--            <field name="act_window_id" ref="view_time_sheet_module_employee"/>-->
+        <!--        </record>-->
+
+
+        <!--        <record id="timesheet_module_action_view_from_employee_form" model="ir.actions.act_window.view">-->
+        <!--            <field name="sequence" eval="10"/>-->
+        <!--            <field name="view_mode">form</field>-->
+        <!--            <field name="view_id" ref="model_view_form"/>-->
+        <!--            <field name="act_window_id" ref="view_time_sheet_module_employee"/>-->
+        <!--        </record>-->
+
+
+        <!--inherit hr form view-->
+        <!--        <record model="ir.ui.view" id="inherit_view_hr_form">-->
+        <!--            <field name="name">inherit.view.hr.form</field>-->
+        <!--            <field name="model">hr.employee</field>-->
+        <!--            <field name="inherit_id" ref="hr.view_employee_form"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <div name="button_box" position="inside">-->
+        <!--                    <button class="oe_stat_button" type="action" name="%(view_time_sheet_module_employee)d"-->
+        <!--                            icon="fa-calendar">-->
+        <!--                        <div class="o_stat_info">-->
+        <!--                            <span class="o_stat_text">Pointage</span>-->
+        <!--                        </div>-->
+        <!--                    </button>-->
+        <!--                </div>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+    </data>
+</odoo>

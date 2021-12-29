@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="ahat_palm_purchase_order_inheritance" model="ir.ui.view">
+            <field name="name">achat_palm.purchase.order.inheritance</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <!--              ajout des champs au tableau du bonc de commande-->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                    <field name="caisse_id" string="Type Caisse"/>
+                    <field name="qte_caisse" string="Qté caisse"/>
+                    <field name="poid_caisse" string="Poid Caisse"/>
+                </xpath>
+                <!--
+                /!\ product_qty = poid net, qte_nette = poid brut
+                -->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_qty']" position="attributes">
+                    <attribute name="string">Poid net</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='product_qty']" position="after">
+                    <field name="qte_nette" string="Poid brut"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="attributes">
+                    <attribute name="string">Désignation</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

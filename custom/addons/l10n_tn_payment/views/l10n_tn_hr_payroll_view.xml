@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="hr_contract_view_form_l10n_tn_payroll" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.l10n.tn.payroll</field>
+            <field name="model">hr.contract</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="om_hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+
+
+			       <field name="schedule_pay" position="after">
+				   <field name="nationalite" placeholder="e.g. Tunisienne"/>
+				   </field>
+
+                 <field name="struct_id" position="after">
+                    <field name="qualif"/>
+                    <field name="niveau"/>
+                    <field name="coef"/>
+                 </field>
+
+                <xpath expr="//group[@name='salary_and_advantages']" position="inside">
+                <field name="base_nombre_jours"/>
+                <field name="base_nombre_heure"/>
+                <field name="base_tranche"/>
+            </xpath>
+
+            </field>
+        </record>
+
+
+
+    <record id="hr_employee_form_l10n_tn_payroll" model="ir.ui.view">
+        <field name="name">hr.employee.form.l10n.tn.payroll</field>
+        <field name="model">hr.employee</field>
+        <field name="priority">30</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <field name="identification_id" position="replace">
+
+                <field name="matricule_cnss" placeholder="10 chiffres"  />
+            </field>
+            </field>
+
+    </record>
+
+    <record id="hr_rule_form_l10n_tn_payroll" model="ir.ui.view">
+        <field name="name">hr.salary.rule.form.l10n.tn.payroll</field>
+        <field name="model">hr.salary.rule.category</field>
+        <field name="priority">40</field>
+        <field name="inherit_id" ref="om_hr_payroll.hr_salary_rule_category_form"/>
+        <field name="arch" type="xml">
+
+            <data>
+                 <xpath expr="group/field[@name='code']" position="before">
+                     <field name="remuneration"/>
+                 </xpath>
+            </data>
+
+        </field>
+
+    </record>
+
+
+</odoo>

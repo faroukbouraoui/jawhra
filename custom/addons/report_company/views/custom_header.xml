@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="external_layout_header" inherit_id="web.external_layout_standard">
+   <xpath expr="//div[3]" position="after">
+
+       Matricule fiscal: <span t-field="company.mf" />
+       <br/>
+      RNE: <span t-field="company.company_registry"/>
+
+
+   </xpath>
+
+</template>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_time_sheet_module_time,access_time_sheet_module_time,model_time_sheet_module_time,,1,1,1,1
+access_time_sheet_module_model,access_time_sheet_module_model,model_time_sheet_module_model,,1,1,1,1

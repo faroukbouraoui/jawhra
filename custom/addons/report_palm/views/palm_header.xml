@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="external_layout_header" inherit_id="web.external_layout_standard">
+   <xpath expr="//div[1]" position="replace">
+
+       <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div class="row">
+                <div class="col-7 mb4">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-width: 300px; max-height: 150px;" alt="Logo"/>
+                </div>
+                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+                <div class="col-5" style="border-left: 1px solid black;" name="company_address">
+                    <div t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    />
+                    Matricule fiscal: <span t-field="company.mf" />
+                    <br/>
+                    RNE: <span t-field="company.company_registry"/>
+                </div>
+            </div>
+        </div>
+   </xpath>
+
+</template>
+</odoo>
